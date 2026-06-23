@@ -186,7 +186,7 @@ jobs:
             pnpm tauri signer sign \
               --private-key-path ~/.tauri/rsstoat.key \
               --password "$TAURI_KEY_PASSWORD" \
-              "$1" 2>/dev/null | grep 'dW50cnVzdGVkIGNvbW1lbnQ6'
+              "$1" 2>/dev/null | grep -E '^[A-Za-z0-9+/=]{150,}$'
           }
 
           if [ -n "$DEB" ]; then
