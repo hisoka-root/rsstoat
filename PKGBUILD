@@ -30,7 +30,7 @@ sha256sums=('SKIP')
 build() {
   cd "$srcdir/rsstoat-$pkgver"
   pnpm install
-  cargo tauri build --bundles deb
+  cargo tauri build
 }
 
 package() {
