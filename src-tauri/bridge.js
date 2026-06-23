@@ -1,4 +1,21 @@
 (function () {
+  // Grant notification permission automatically since the webview
+  // may block the native permission prompt.
+  if (window.Notification) {
+    var _permission = 'granted';
+    Object.defineProperty(Notification, 'permission', {
+      configurable: true,
+      enumerable: true,
+      get: function () { return _permission; },
+    });
+    var _original = Notification.requestPermission;
+    Notification.requestPermission = function (callback) {
+      var result = Promise.resolve('granted');
+      if (callback) { callback('granted'); }
+      return result;
+    };
+  }
+
   if (window.__TAURI__ === undefined) {
     console.warn('rsStoat bridge: __TAURI__ not available, native features disabled');
     return;
