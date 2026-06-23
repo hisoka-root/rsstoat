@@ -41,6 +41,16 @@ Downloads can be found on the [releases page](https://github.com/hisoka-root/rss
 - [x] Arch Linux PKGBUILD
 - [ ] **Native frontend** — replace the embedded web URL with a local Tauri webview frontend, eliminating the dependency on `stoat.chat/app`
 
+## Known Limitations
+
+These are due to missing APIs in Tauri v2.11 and will be resolved once Tauri v2.12 ships.
+
+| Feature | Status | Notes |
+|---|---|---|
+| Screen sharing (custom picker) | Native picker used | Tauri lacks `setDisplayMediaRequestHandler`. Screen sharing works via the native browser picker instead of Stoat's custom UI. |
+| Auto-grant mic/camera | Prompt shown | Permission handler API lands in v2.12. Currently a browser permission prompt appears on first voice channel join. |
+| macOS screen sharing | Needs entitlements | Requires `Info.plist` with camera/mic usage descriptions + entitlements. |
+
 ## Development
 
 ### Prerequisites

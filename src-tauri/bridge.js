@@ -21,6 +21,18 @@
     return;
   }
 
+  // Override getDisplayMedia to return the stream captured by our
+  // onceScreenPicker impl, since Tauri v2.11 lacks setDisplayMediaRequestHandler.
+  var _origGetDisplayMedia = navigator.mediaDevices.getDisplayMedia.bind(navigator.mediaDevices);
+  navigator.mediaDevices.getDisplayMedia = function () {
+    if (window.native && window.native.__screenShareStream) {
+      var stream = window.native.__screenShareStream;
+      window.native.__screenShareStream = null;
+      return Promise.resolve(stream);
+    }
+    return _origGetDisplayMedia.apply(this, arguments);
+  };
+
   var invoke = window.__TAURI__.core.invoke;
 
   // ---- window.native API ----
@@ -49,6 +61,23 @@
 
   window.native.setBadgeCount = function (count) {
     invoke('set_badge_count', { count: count });
+  };
+
+  window.native.onceScreenPicker = function (callback) {
+    // Tauri v2.11 lacks setDisplayMediaRequestHandler (coming in v2.12).
+    // Use the native getDisplayMedia() picker instead.
+    navigator.mediaDevices.getDisplayMedia({ video: true, audio: true })
+      .then(function (stream) {
+        window.native.__screenShareStream = stream;
+        callback([{ idx: 0, name: 'Screen / Window', isFullScreen: true }]);
+      })
+      .catch(function () {
+        callback([]);
+      });
+  };
+
+  window.native.screenPickerCallback = function () {
+    // Stream was already captured by the native picker.
   };
 
   // ---- window.desktopConfig API ----
