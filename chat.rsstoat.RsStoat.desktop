@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=rsStoat
+Comment=Open source, user-first chat platform
+Exec=rsstoat
+Terminal=false
+Type=Application
+Icon=chat.rsstoat.RsStoat
+Categories=Network;InstantMessaging
+StartupWMClass=rsStoat
+X-Desktop-File-Install-Version=0.26

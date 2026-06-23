@@ -1,0 +1,32 @@
+{
+  "identifier": "default",
+  "description": "Default capabilities for rsStoat",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:default",
+    "core:window:allow-minimize",
+    "core:window:allow-toggle-maximize",
+    "core:window:allow-close",
+    "core:window:allow-set-focus",
+    "core:window:allow-show",
+    "core:window:allow-hide",
+    "core:window:allow-set-size",
+    "core:window:allow-set-position",
+    "core:window:allow-is-visible",
+    "core:window:allow-maximize",
+    "core:window:allow-unmaximize",
+    "core:window:allow-set-badge-count",
+    "core:window:allow-set-overlay-icon",
+    "core:event:default",
+    "core:event:allow-emit",
+    "core:event:allow-listen",
+    "shell:default",
+    "shell:allow-open",
+    "updater:default",
+    "updater:allow-check",
+    "updater:allow-download",
+    "updater:allow-download-and-install",
+    "updater:allow-install"
+  ]
+}

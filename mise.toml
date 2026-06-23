@@ -1,0 +1,8 @@
+[tools]
+node = "25.4.0"
+pnpm = "10.28.1"
+gh = "2.25.0"
+"cargo:tauri-cli" = "2"
+
+[settings]
+cargo_binstall = true

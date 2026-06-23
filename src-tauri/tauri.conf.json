@@ -1,0 +1,37 @@
+{
+  "productName": "rsStoat",
+  "version": "1.3.0",
+  "identifier": "chat.rsstoat.desktop",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "https://stoat.chat/app",
+    "beforeDevCommand": "",
+    "beforeBuildCommand": ""
+  },
+  "app": {
+    "windows": [],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self' https://stoat.chat; style-src 'self' 'unsafe-inline' https://stoat.chat; connect-src 'self' https: wss:; img-src 'self' data: https:; font-src 'self' https://stoat.chat; frame-src 'self' https://stoat.chat; media-src 'self' https: blob:"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["deb", "dmg", "msi"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.ico"
+    ]
+  },
+  "plugins": {
+    "updater": {
+      "active": true,
+      "endpoints": [
+        "https://github.com/hisoka-root/rsstoat/releases/latest/download/updater.json"
+      ],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEM2Nzg4NzNFNTA5Mjc0RDYKUldUV2RKSlFQb2Q0eG0vREE3dmFBZGRjazJ3UkNHLzRRb3dNak44YzRGVUhSSXl4RS9CTXdRY20K"
+    }
+  }
+}
