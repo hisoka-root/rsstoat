@@ -182,18 +182,24 @@ jobs:
           DMG_AARCH64_SIG=""
           MSI_SIG=""
 
+          sign_bundle() {
+            pnpm tauri signer sign \
+              --private-key-path ~/.tauri/rsstoat.key \
+              --password "$TAURI_KEY_PASSWORD" \
+              "$1" 2>/dev/null | tail -1
+          }
+
           if [ -n "$DEB" ]; then
-            DEB_SIG=$(pnpm tauri signer sign --private-key-path ~/.tauri/rsstoat.key --password "$TAURI_KEY_PASSWORD" "$DEB")
-            echo "deb_sig=$DEB_SIG"
+            DEB_SIG=$(sign_bundle "$DEB")
           fi
           if [ -n "$DMG_X64" ]; then
-            DMG_X64_SIG=$(pnpm tauri signer sign --private-key-path ~/.tauri/rsstoat.key --password "$TAURI_KEY_PASSWORD" "$DMG_X64")
+            DMG_X64_SIG=$(sign_bundle "$DMG_X64")
           fi
           if [ -n "$DMG_AARCH64" ]; then
-            DMG_AARCH64_SIG=$(pnpm tauri signer sign --private-key-path ~/.tauri/rsstoat.key --password "$TAURI_KEY_PASSWORD" "$DMG_AARCH64")
+            DMG_AARCH64_SIG=$(sign_bundle "$DMG_AARCH64")
           fi
           if [ -n "$MSI" ]; then
-            MSI_SIG=$(pnpm tauri signer sign --private-key-path ~/.tauri/rsstoat.key --password "$TAURI_KEY_PASSWORD" "$MSI")
+            MSI_SIG=$(sign_bundle "$MSI")
           fi
 
           # Build updater.json
