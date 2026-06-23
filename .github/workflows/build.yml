@@ -163,7 +163,7 @@ jobs:
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           PUB_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          NOTES="See https://github.com/hisoka-root/rsstoat/releases/tag/${GITHUB_REF_NAME}"
+          NOTES="rsStoat $VERSION"
 
           DEB=$(find bundles -name '*.deb' | head -1)
           DEB_NAME=$(basename "$DEB")
@@ -232,7 +232,7 @@ jobs:
         run: |
           gh release create $GITHUB_REF_NAME \
             --title "rsStoat $GITHUB_REF_NAME" \
-            --notes "See [changelog](https://github.com/hisoka-root/rsstoat/releases/tag/$GITHUB_REF_NAME) for details." \
+            --notes "rsStoat desktop client for Stoat chat. See [CHANGELOG.md](https://github.com/hisoka-root/rsstoat/blob/master/CHANGELOG.md) for what's new." \
             --repo hisoka-root/rsstoat \
             || true
 
@@ -240,12 +240,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          VERSION="${GITHUB_REF_NAME#v}"
           gh release upload $GITHUB_REF_NAME \
             bundles/*.deb \
             bundles/*.dmg \
             bundles/*.msi \
-            bundles/*.tar.gz \
-            bundles/*.asc \
+            bundles/rsstoat-*.tar.gz \
+            bundles/rsstoat-*.tar.gz.asc \
             updater.json \
             --repo hisoka-root/rsstoat \
             --clobber
