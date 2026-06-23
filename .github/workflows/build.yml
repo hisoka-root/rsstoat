@@ -158,9 +158,11 @@ jobs:
       - name: Generate updater manifest
         id: updater
         env:
-          TAURI_SIGNING_PRIVATE_KEY_PATH: ${{ runner.home }}/.tauri/rsstoat.key
-          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
+          TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         run: |
+          export TAURI_SIGNING_PRIVATE_KEY_PATH="$HOME/.tauri/rsstoat.key"
+          export TAURI_SIGNING_PRIVATE_KEY_PASSWORD="$TAURI_KEY_PASSWORD"
+
           VERSION="${GITHUB_REF_NAME#v}"
           PUB_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           NOTES="rsStoat $VERSION"
