@@ -91,7 +91,6 @@ typings/
 # Tauri
 src-tauri/target/
 src-tauri/gen/
-dist/
 
 # misc
 package-lock.json
