@@ -234,9 +234,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          VERSION_ESC=$(echo "$VERSION" | sed 's/\./\\./g')
+          CHANGELOG=$(sed -n "/^## \[${VERSION_ESC}\]/,/^## \[/{//!p}" CHANGELOG.md)
           gh release create $GITHUB_REF_NAME \
             --title "rsStoat $GITHUB_REF_NAME" \
-            --notes "rsStoat desktop client for Stoat chat. See [CHANGELOG.md](https://github.com/hisoka-root/rsstoat/blob/master/CHANGELOG.md) for what's new." \
+            --notes "$CHANGELOG" \
             --repo hisoka-root/rsstoat \
             || true
 

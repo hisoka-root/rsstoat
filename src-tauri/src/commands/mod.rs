@@ -15,7 +15,7 @@ pub struct Versions {
 pub fn get_versions() -> Versions {
     Versions {
         tauri: "2".to_string(),
-        desktop: "1.3.0".to_string(),
+        desktop: "1.4.0".to_string(),
     }
 }
 

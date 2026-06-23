@@ -44,7 +44,7 @@
     node: '',
     chrome: '',
     tauri: '2',
-    desktop: '1.3.0',
+    desktop: '1.4.0',
   };
 
   window.native.minimise = function () {
