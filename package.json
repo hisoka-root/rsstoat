@@ -5,6 +5,7 @@
   "private": true,
   "description": "rsStoat - Tauri v2 desktop client for Stoat chat",
   "author": "hisoka",
+  "packageManager": "pnpm@10.28.1",
   "scripts": {
     "tauri": "tauri",
     "dev": "tauri dev",
