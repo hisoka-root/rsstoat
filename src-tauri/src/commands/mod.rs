@@ -151,7 +151,7 @@ pub async fn check_update(app: AppHandle) -> Result<String, String> {
 }
 
 #[tauri::command]
-pub async fn open_devtools(window: tauri::WebviewWindow) -> Result<(), String> {
+pub fn open_devtools(window: tauri::WebviewWindow) -> Result<(), String> {
     window.open_devtools();
     Ok(())
 }
