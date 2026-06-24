@@ -7,12 +7,12 @@
   rsStoat
 </h1>
 
-[![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)](https://github.com/hisoka-root/rsstoat/releases)
+[![Version](https://img.shields.io/badge/version-1.4.1-blue.svg)](https://github.com/hisoka-root/rsstoat/releases)
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 
 Desktop client for [Stoat](https://stoat.chat) chat, built with [Tauri v2](https://v2.tauri.app).
 
-**Version** 1.4.0 &middot; A port of the Stoat desktop client from **Electron** to **Tauri v2** (Rust backend, smaller bundles).
+**Version** 1.4.1 &middot; A port of the Stoat desktop client from **Electron** to **Tauri v2** (Rust backend, smaller bundles).
 
 Available for **Windows** (MSI), **macOS** (DMG), and **Linux** (DEB, Arch).
 </div>

@@ -32,7 +32,7 @@
     node: function () { return ''; },
     chrome: function () { return ''; },
     electron: function () { return ''; },
-    desktop: function () { return '1.4.0'; },
+    desktop: function () { return '1.4.1'; },
   };
 
   window.native.minimise = function () {

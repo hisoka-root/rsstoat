@@ -1,6 +1,6 @@
 # Maintainer: hisoka <root@hisoka.lol>
 pkgname=rsstoat
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="rsStoat - Tauri v2 desktop client for Stoat chat"
 arch=('x86_64')

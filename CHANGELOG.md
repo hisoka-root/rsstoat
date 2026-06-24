@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.1](https://github.com/hisoka-root/rsstoat/releases/tag/v1.4.1) (2026-06-23)
+
+### Fixes
+
+* Match Electron preload API: `versions` fields are getter functions
+* Tray left-click always shows window instead of toggling
+* Simplified screen share bridge (removed premature getDisplayMedia call)
+
 ## [1.4.0](https://github.com/hisoka-root/rsstoat/releases/tag/v1.4.0) (2026-06-23)
 
 Match upstream Stoat v1.4.0 release.

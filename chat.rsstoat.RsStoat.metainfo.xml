@@ -15,6 +15,11 @@
       native application.</p>
   </description>
   <releases>
+    <release date="2026-06-23" version="1.4.1">
+      <description>
+        <p>Match Electron preload API and fix tray behavior.</p>
+      </description>
+    </release>
     <release date="2026-06-23" version="1.4.0">
       <description>
         <p>Match upstream release. Added screen sharing via native picker, notification permission auto-grant, and Windows taskbar badge overlay.</p>
