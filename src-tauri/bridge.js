@@ -112,6 +112,9 @@
         e.preventDefault();
         zoom = 1;
         document.body.style.zoom = '';
+      } else if (e.key === 'F12') {
+        e.preventDefault();
+        invoke('open_devtools');
       } else if (e.key === 'F5' || ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'r')) {
         e.preventDefault();
         location.reload();
