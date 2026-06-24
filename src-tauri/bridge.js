@@ -1,27 +1,35 @@
 (function () {
-  // Grant notification permission automatically since the webview
-  // may block the native permission prompt.
-  if (window.Notification) {
-    var _permission = 'granted';
-    Object.defineProperty(Notification, 'permission', {
-      configurable: true,
-      enumerable: true,
-      get: function () { return _permission; },
-    });
-    var _original = Notification.requestPermission;
-    Notification.requestPermission = function (callback) {
-      var result = Promise.resolve('granted');
-      if (callback) { callback('granted'); }
-      return result;
-    };
-  }
-
   if (window.__TAURI__ === undefined) {
     console.warn('rsStoat bridge: __TAURI__ not available, native features disabled');
     return;
   }
 
   var invoke = window.__TAURI__.core.invoke;
+
+  // Grant notification permission and route through Tauri plugin
+  // for native desktop notifications instead of in-webview popups.
+  if (window.Notification) {
+    var _OrigNotification = window.Notification;
+    // Replace constructor to send native notifications via Tauri plugin
+    window.Notification = function (title, options) {
+      invoke('plugin:notification|notify', {
+        title: title,
+        body: (options && options.body) || '',
+      });
+    };
+    window.Notification.prototype = _OrigNotification.prototype;
+    // Auto-grant permission so the web app proceeds
+    Object.defineProperty(window.Notification, 'permission', {
+      configurable: true,
+      enumerable: true,
+      get: function () { return 'granted'; },
+    });
+    window.Notification.requestPermission = function (callback) {
+      var result = Promise.resolve('granted');
+      if (callback) { callback('granted'); }
+      return result;
+    };
+  }
 
   // ---- window.native API ----
   if (!window.native) {
