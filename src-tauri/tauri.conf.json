@@ -1,6 +1,6 @@
 {
   "productName": "rsStoat",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "identifier": "chat.rsstoat.desktop",
   "build": {
     "frontendDist": "../dist",

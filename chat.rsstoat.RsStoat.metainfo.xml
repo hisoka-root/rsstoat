@@ -15,6 +15,11 @@
       native application.</p>
   </description>
   <releases>
+    <release date="2026-06-24" version="1.4.2">
+      <description>
+        <p>DevTools shortcut, updater diagnostics, and notification plugin.</p>
+      </description>
+    </release>
     <release date="2026-06-23" version="1.4.1">
       <description>
         <p>Match Electron preload API and fix tray behavior.</p>

@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.2](https://github.com/hisoka-root/rsstoat/releases/tag/v1.4.2) (2026-06-24)
+
+### Features
+
+* `window.native.checkUpdate()` command for updater diagnostics
+* F12 opens DevTools (enabled via `devtools` feature)
+
+### Fixes
+
+* Match Electron preload API: `versions` fields are getter functions
+* Tray left-click always shows window instead of toggling
+* Screen share bridge sends dummy source so web app picker appears
+* Native desktop notifications via `tauri-plugin-notification`
+
 ## [1.4.1](https://github.com/hisoka-root/rsstoat/releases/tag/v1.4.1) (2026-06-23)
 
 ### Fixes
