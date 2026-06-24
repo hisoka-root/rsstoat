@@ -29,10 +29,10 @@
   }
 
   window.native.versions = {
-    node: '',
-    chrome: '',
-    tauri: '2',
-    desktop: '1.4.0',
+    node: function () { return ''; },
+    chrome: function () { return ''; },
+    electron: function () { return ''; },
+    desktop: function () { return '1.4.0'; },
   };
 
   window.native.minimise = function () {
