@@ -61,10 +61,10 @@
 
   window.native.onceScreenPicker = function (callback) {
     // Tauri v2.11 lacks setDisplayMediaRequestHandler (coming in v2.12).
-    // The web app calls getDisplayMedia() directly, which shows the native
-    // browser screen picker. Callback receives an empty source list to
-    // indicate we're ready for the native flow.
-    callback([]);
+    // Provide a single dummy source so the web app shows the picker.
+    // When the user selects it, screenPickerCallback fires (no-op) and
+    // the web app calls getDisplayMedia() which shows the native picker.
+    callback([{ idx: 0, name: 'Screen / Window', isFullScreen: true }]);
   };
 
   window.native.screenPickerCallback = function (idx, audio) {
