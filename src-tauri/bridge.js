@@ -47,6 +47,10 @@
     invoke('minimise');
   };
 
+  window.native.checkUpdate = function () {
+    return invoke('check_update');
+  };
+
   window.native.maximise = function () {
     invoke('maximise');
   };

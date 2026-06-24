@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 use tauri::AppHandle;
 use tauri::Manager;
+use tauri_plugin_updater::UpdaterExt;
 
 use crate::config::{AppConfig, ConfigState};
 use crate::discord_rpc::DiscordRpc;
@@ -132,4 +133,17 @@ pub fn show_window(window: tauri::WebviewWindow) -> Result<(), String> {
 #[tauri::command]
 pub fn hide_window(window: tauri::WebviewWindow) -> Result<(), String> {
     window.hide().map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+pub async fn check_update(app: AppHandle) -> Result<String, String> {
+    let updater = app.updater().map_err(|e| format!("Updater not available: {}", e))?;
+    match updater.check().await {
+        Ok(Some(update)) => Ok(format!(
+            "Update available: {} -> {}",
+            update.current_version, update.version
+        )),
+        Ok(None) => Ok("No update available".into()),
+        Err(e) => Err(format!("Update check failed: {}", e)),
+    }
 }

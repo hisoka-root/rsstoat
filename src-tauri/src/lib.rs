@@ -194,6 +194,7 @@ pub fn run() {
             commands::is_window_visible,
             commands::show_window,
             commands::hide_window,
+            commands::check_update,
         ])
         .run(tauri::generate_context!())
         .expect("error while running rsStoat");
