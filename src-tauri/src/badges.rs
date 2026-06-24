@@ -55,10 +55,10 @@ fn set_badge_count_windows(window: &tauri::WebviewWindow, count: i32) {
 fn create_count_icon(
     count: i32,
 ) -> windows::core::Result<windows::Win32::UI::WindowsAndMessaging::HICON> {
+    use windows::core::w;
     use windows::Win32::Foundation::{COLORREF, RECT};
     use windows::Win32::Graphics::Gdi::*;
     use windows::Win32::UI::WindowsAndMessaging::*;
-    use windows::core::w;
 
     unsafe {
         let size = 32i32;

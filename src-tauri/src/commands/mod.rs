@@ -137,7 +137,9 @@ pub fn hide_window(window: tauri::WebviewWindow) -> Result<(), String> {
 
 #[tauri::command]
 pub async fn check_update(app: AppHandle) -> Result<String, String> {
-    let updater = app.updater().map_err(|e| format!("Updater not available: {}", e))?;
+    let updater = app
+        .updater()
+        .map_err(|e| format!("Updater not available: {}", e))?;
     match updater.check().await {
         Ok(Some(update)) => Ok(format!(
             "Update available: {} -> {}",
